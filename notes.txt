@@ -1,3 +1,4 @@
 &nbsp adds a space between buttons etc.
 w3schools 4 links for all the requirements.
 block content + endblock for content to be imported
+:hover is css command after the class for only hover

@@ -6,7 +6,35 @@
 
 .dropdown-menu{
 
-    background-color: aqua;
+    background-color: rgb(156, 250, 156);
 
 }
+
+.navbtn{
+    
+    background-color: rgb(156, 250, 156);
+}
+
+
+.dropdown-item:hover{
+
+    background-color: rgb(125, 253, 125);
+}
+.pricecardindex{
+    background-color: red;
+    border-bottom-left-radius: 50px 20px;
+    border-bottom-right-radius: 50px 20px;
+}
+
+.pricecardindexheader{
+    background-color: rgb(251, 88, 88);
+}
+
+.card3{
+    margin-top:200px;
+    border-bottom-left-radius: 50px 20px;
+    border-bottom-right-radius: 50px 20px; 
+}
+
+
 
