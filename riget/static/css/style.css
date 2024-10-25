@@ -36,5 +36,14 @@
     border-bottom-right-radius: 50px 20px; 
 }
 
+.form-layout{
 
+    border-radius: 5px;
+    width: 500px;
+    background-color: #47e985;
+}
+
+.errorlist{
+    color: red;     
+}
 
