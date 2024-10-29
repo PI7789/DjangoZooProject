@@ -10,26 +10,33 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="btn navbtn" href="{% url 'logout' %}">sign out</a>
+        {% else %}
         <li class="nav-item dropdown">
-            <a class="btn dropdown-toggle navbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="btn dropdown-toggle navbtn" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Login
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Login</a>
+              <a class="dropdown-item" href="{% url 'login' %}">Login</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{% url 'admin:index' %}">Admin Login</a>
 
           </li>
+          
           &nbsp; &nbsp;
         <li class="nav-item">
           <a class="btn navbtn" href="{% url 'register' %}">Register</a>
-          &nbsp; &nbsp;
+          
         </li>
+        {% endif %}
+        &nbsp; &nbsp; 
         <li class="nav-item">
           <a class="btn navbtn" href="#">Plan your visit</a>
         </li>
         &nbsp; &nbsp;
-        {% comment %} dropdown {% endcomment %}
+        
         <li class="nav-item dropdown">
           <a class="btn dropdown-toggle navbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            Info
@@ -41,11 +48,21 @@
             <a class="dropdown-item" href="#">Education</a>
           </div>
         </li>
-            {% comment %} dropdown end {% endcomment %}
+            
             &nbsp; &nbsp;
         <li class="nav-item">
           <a class="btn navbtn" href="#">Loyalty</a>
         </li>
+        &nbsp; &nbsp; &nbsp;
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="btn navbtn  profilebtn" href="{% url 'profile' %}">logged in as {{ user.username }}</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="btn navbtn1  profilebtn" href="{% url 'profile' %}">Guest</a>
+        </li>
+        {% endif %}
       </ul>
       </form>
     </div>

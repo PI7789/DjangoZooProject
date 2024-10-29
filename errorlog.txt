@@ -1,0 +1,4 @@
+profile button says logged in as in index but has correct user in profile.html - fixed
+
+
+cannot have any space between register and plan your visit buttons - fixed

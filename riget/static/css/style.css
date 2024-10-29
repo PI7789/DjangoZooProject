@@ -13,6 +13,8 @@
 .navbtn{
     
     background-color: rgb(156, 250, 156);
+    white-space: nowrap;
+    border-color: black;
 }
 
 
@@ -47,3 +49,19 @@
     color: red;     
 }
 
+.profilebtn{
+
+    margin-left: 1000px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: -12px
+    
+}
+
+.navbtn1{
+    background-color: rgb(7, 235, 7);
+    white-space: nowrap;
+    border-color: black;
+}
