@@ -17,3 +17,4 @@ urlpatterns = [
 
     path('hotel', views.hotelinfo, name = "hotel")
 ]
+
