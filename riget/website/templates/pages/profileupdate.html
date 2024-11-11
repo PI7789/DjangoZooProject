@@ -1,0 +1,13 @@
+{% extends 'pages/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container p-5 form-layout">
+    <form method="POST" autocomplete="on">
+    {% csrf_token %}
+    {{ProfileForm|crispy}} 
+
+</form>
+</div>
+{% endblock %}

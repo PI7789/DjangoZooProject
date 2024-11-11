@@ -81,3 +81,8 @@ body   {
 .animaltext{
     color: white; 
 }
+
+.hoteltext{
+    color: gold;
+    background-color: rgba(0, 0, 0, 0.367);
+}
