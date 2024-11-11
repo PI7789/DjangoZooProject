@@ -20,5 +20,5 @@ class LoginForm(AuthenticationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = ZooUser
-        fields = ['username', 'password', 'phonenum', 'points']
+        fields = ['username', 'phonenum', 'points']
 

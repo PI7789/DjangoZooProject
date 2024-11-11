@@ -45,8 +45,10 @@ def login(request):
     context = {'login_form': form}
     return render(request,'pages/login.html', context=context)
 @login_required(login_url="login")
-def updateprofile(request):
-    form = ProfileForm()
+def updateprofile(request, pk):
+    
+    one_record = ZooUser.objects.get(id=pk)
+    form = ProfileForm(instance=one_record)
     username = request.user.username  # Get the username 
     if request.method == "POST":
         form = ProfileForm(request, data=request.POST)
@@ -72,10 +74,10 @@ def hotelinfo(request):
 
 @login_required(login_url='login')
 def profile(request, pk):
-    print("WORKS")
+     print("WORKS")
 
-    one_record = ZooUser.object.get(id=pk)
-    context = {'record':one_record}
-    return render(request, 'website/view-record.html', context = context)
+     one_record = ZooUser.objects.get(id=pk)
+     context = {'record':one_record}     
+     return render(request, 'pages/profile.html', context = context)
 
 
