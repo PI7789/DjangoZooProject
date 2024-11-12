@@ -86,3 +86,16 @@ body   {
     color: gold;
     background-color: rgba(0, 0, 0, 0.367);
 }
+
+.card17{
+    background-color: #5db0be;
+    width: 700px;
+    margin-left: 180px;
+}
+
+.button1{
+    width:30%;
+    float: left;
+    margin-right: 65px;
+    margin-left: 65px;
+}

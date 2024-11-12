@@ -17,6 +17,8 @@ urlpatterns = [
 
     path('animals', views.animalpage, name = "animals"),
 
-    path('hotel', views.hotelinfo, name = "hotel")
+    path('hotel', views.hotelinfo, name = "hotel"),
+
+    path('delete-account/<int:pk>', views.delete_account, name="delete-account"),
 ]
 

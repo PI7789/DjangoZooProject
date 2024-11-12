@@ -3,13 +3,17 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <div class = "card">
+    <div class = "card card17">
+        <h5> Profile Page </h5>
         <div  class = "card-body">
             <p> <strong> Username: </strong> {{record.username}}</p>
             <p> <strong> Email: </strong> {{record.email}}</p>
             <p> <strong> Phone: </strong> {{record.phonenum}}</p>
         </div>
-    <a class = "btn btn-secondary" href = "{% url 'updateprofile' request.user.id %}"> click </a>
+    <div>
+    <a class = "btn btn-success button1" href = "{% url 'updateprofile' request.user.id %}"> Update Profile </a>
+    <a class = "btn btn-danger button1" href = "{% url 'delete-Account' record.id %}"> Delete Account </a>
+    </div>
     </div>
 
 

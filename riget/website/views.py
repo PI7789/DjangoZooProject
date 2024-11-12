@@ -51,11 +51,10 @@ def updateprofile(request, pk):
     form = ProfileForm(instance=one_record)
     username = request.user.username  # Get the username 
     if request.method == "POST":
-        form = ProfileForm(request, data=request.POST)
+        form = ProfileForm(request.POST, instance=one_record)
         if form.is_valid():
             form.save()
-            messages.success(request, "profile")
-            return redirect('profile')
+            return redirect('profile', pk)
     context = {'ProfileForm': form , 
                'username' : username} 
     return render(request, 'pages/profileupdate.html', context=context)
@@ -79,5 +78,9 @@ def profile(request, pk):
      one_record = ZooUser.objects.get(id=pk)
      context = {'record':one_record}     
      return render(request, 'pages/profile.html', context = context)
+@login_required(login_url='login')
+def delete_account(request, pk):
+    record = ZooUser.objects.get(id=pk)
+    record.delete()
 
-
+    return redirect("")
