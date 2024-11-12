@@ -20,5 +20,6 @@ class LoginForm(AuthenticationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = ZooUser
-        fields = ['username', 'phonenum', 'points']
-
+        fields = ['username', 'phonenum', 'email', 'points']
+        
+        #need to add a readonly widget

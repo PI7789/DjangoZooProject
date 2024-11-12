@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class = "navb">
-<nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-lg">
     <a class="navbar-brand text-dark" href="{% url '' %}">Riget Zoo</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -56,12 +56,14 @@
         &nbsp; &nbsp; &nbsp;
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="btn navbtn  profilebtn" href="{% url 'profile' request.user.id %}">logged in as {{ user.username }}</a>
+          <a class="btn navbtn  profilebtn " href="{% url 'profile' request.user.id %}">logged in as {{ user.username }}</a>
         </li>
         {% else %}
+        <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="btn navbtn1  profilebtn" href="{% url 'login' %}">Guest</a>
         </li>
+      </ul>
         {% endif %}
       </ul>
       </form>
