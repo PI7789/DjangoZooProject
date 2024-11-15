@@ -44,6 +44,8 @@ def login(request):
     
     context = {'login_form': form}
     return render(request,'pages/login.html', context=context)
+
+
 @login_required(login_url="login")
 def updateprofile(request, pk):
     
@@ -73,8 +75,6 @@ def hotelinfo(request):
 
 @login_required(login_url='login')
 def profile(request, pk):
-     print("WORKS")
-
      one_record = ZooUser.objects.get(id=pk)
      context = {'record':one_record}     
      return render(request, 'pages/profile.html', context = context)
@@ -84,3 +84,6 @@ def delete_account(request, pk):
     record.delete()
 
     return redirect("")
+
+def delconfirmation(request):
+    return render(request, 'pages/deleteconfirmation.html')
