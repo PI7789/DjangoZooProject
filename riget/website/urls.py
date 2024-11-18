@@ -23,5 +23,7 @@ urlpatterns = [
 
     path('confirmation', views.delconfirmation, name = "confirmation"),
 
+    path('Booking1', views.booking, name= "Booking1"),
+
 ]
 

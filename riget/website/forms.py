@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import ZooUser
+from .models import ZooUser, HotelBooking
 
 from django import forms
 from django.forms.widgets import PasswordInput, TextInput
@@ -23,3 +23,26 @@ class ProfileForm(forms.ModelForm):
         fields = ['username', 'phonenum', 'email', 'points']
         
         #need to add a readonly widget
+
+class Hotel_Booking_Form(forms.ModelForm):
+
+    class Meta:
+        model = HotelBooking
+
+        fields = ['hotel_booking_date_arrive', 'hotel_booking_date_leave', 'hotel_booking_adults',
+                  'hotel_booking_adults', 'hotel_booking_children', 'hotel_booking_oap', 'hotel_total_cost', 'hotel_points' ]
+        
+        labels={
+            "hotel_booking_date_arrive": 'Day you wish to arrive',
+            "hotel_booking_date_leave": 'Day you wish to leave',
+        }
+        
+        widgets = {
+            'hotel_booking_date_arrive': forms.DateInput(attrs={'type': 'date'}),
+            'hotel_booking_date_leave': forms.DateInput(attrs={'type': 'date'}),
+            'hotel_total_cost' : forms.HiddenInput(),
+            'hotel_points': forms.HiddenInput(),
+        }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args,**kwargs)

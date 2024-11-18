@@ -7,8 +7,11 @@
         <h5> Profile Page </h5>
         <div  class = "card-body">
             <p> <strong> Username: </strong> {{record.username}}</p>
+            <hr>
             <p> <strong> Email: </strong> {{record.email}}</p>
+            <hr>
             <p> <strong> Phone: </strong> {{record.phonenum}}</p>
+            <hr>
         </div>
     <div>
     <a class = "btn btn-success button1" href = "{% url 'updateprofile' request.user.id %}"> Update Profile </a>
