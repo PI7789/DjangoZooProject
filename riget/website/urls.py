@@ -25,5 +25,7 @@ urlpatterns = [
 
     path('Booking1', views.booking, name= "Booking1"),
 
+    path('Payment', views.Payment, name = "Payment")
+
 ]
 

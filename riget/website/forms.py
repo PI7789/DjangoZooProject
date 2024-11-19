@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import ZooUser, HotelBooking
+from .models import ZooUser, HotelBooking, PaymentModel
 
 from django import forms
 from django.forms.widgets import PasswordInput, TextInput
@@ -46,3 +46,13 @@ class Hotel_Booking_Form(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args,**kwargs)
+
+class PaymentForm(forms.ModelForm):
+
+    class Meta:
+        model = PaymentModel
+
+        fields = ['card_num','Expiry_Date','Card_Name','security_code']
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)

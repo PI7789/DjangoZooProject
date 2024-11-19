@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm, LoginForm, ProfileForm, Hotel_Booking_Form
+from .forms import CreateUserForm, LoginForm, ProfileForm, Hotel_Booking_Form, PaymentForm
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
@@ -134,4 +134,34 @@ def booking (request):
              return redirect('hotel')
     context = {'form': form}
 
-    return render(request, 'pages/booking1.html', context=context)         
+    return render(request, 'pages/booking1.html', context=context)  
+
+
+@login_required(login_url="login")
+def Payment(request):
+    
+
+    form = PaymentForm()
+
+    if request.method == "POST":
+        updated_request = request.POST.copy()
+        updated_request.update({'hotel_user_id_id': request.user})
+
+        form = PaymentForm(updated_request)
+
+        if form.is_valid():
+            obj = form.save(commit=False)
+
+
+
+
+
+            obj.save()
+
+            messages.success(request, "Payment Successful")
+            return redirect('')   
+        else:
+             print("there was a problem with the Payment")
+             return redirect('Payment')
+    context = {'form': form}
+    return render(request, 'pages/Payment.html', context = context)

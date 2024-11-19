@@ -21,3 +21,9 @@ class HotelBooking(models.Model):
     hotel_booking_oap = models.IntegerField(default=0)
     hotel_total_cost = models.FloatField(default=0)
     hotel_points = models.IntegerField(default=0)
+
+class PaymentModel(models.Model):
+    card_num = models.CharField(max_length=16, blank=True)
+    Expiry_Date = models.CharField(max_length=5, blank=True)
+    Card_Name = models.TextField(blank = True)
+    security_code = models.CharField(max_length=3, blank=True)
