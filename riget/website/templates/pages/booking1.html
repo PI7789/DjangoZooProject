@@ -9,7 +9,7 @@
     <hr>
     <br>
     
-    <form action="{% url 'Booking1' %}" method="POST" autocomplete="off">
+    <form action="{% url 'Payment' %}" method="POST" autocomplete="off">
         {% csrf_token %}
 
         {{form|crispy}}
@@ -17,7 +17,7 @@
         <h2 id="hotel_output" > Hotel cost : £0.00 </h2>
         <br>
 
-        <button type="submit" class="btn btn-primary w-100 btn-block p-2"> Book &nbsp; <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+        <button type="submit" href="" class="btn btn-primary w-100 btn-block p-2"> Book &nbsp; <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
     
     </form>
 

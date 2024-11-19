@@ -11,13 +11,14 @@
     <hr>
     <br>
     
+    
     <form method="POST" autocomplete="off">
         {% csrf_token %}
-        {{PaymentForm|crispy}} 
+        {{paymentform|crispy}} 
         <br>
         <br>
-
-        <button type="submit" class="btn btn-primary w-100 btn-block p-2"> Pay &nbsp; <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+        <h2 id="hotel_output" > Hotel cost : £0.00 </h2>
+        <button type="submit" class="btn btn-primary w-100 btn-block p-2 paymentbutton"> Pay &nbsp; <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
     
     </form>
 

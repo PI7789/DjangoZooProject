@@ -25,5 +25,5 @@ class HotelBooking(models.Model):
 class PaymentModel(models.Model):
     card_num = models.CharField(max_length=16, blank=True)
     Expiry_Date = models.CharField(max_length=5, blank=True)
-    Card_Name = models.TextField(blank = True)
+    Card_Name = models.CharField(max_length=40, blank=True)
     security_code = models.CharField(max_length=3, blank=True)

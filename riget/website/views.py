@@ -127,8 +127,12 @@ def booking (request):
 
             obj.save()
 
+           
+
             messages.success(request, "Hotel Booked Successfully")
-            return redirect('')   
+            return redirect('') 
+
+
         else:
              print("there was a problem with the form")
              return redirect('hotel')
@@ -163,5 +167,6 @@ def Payment(request):
         else:
              print("there was a problem with the Payment")
              return redirect('Payment')
-    context = {'form': form}
+        
+    context = {'paymentform': form}
     return render(request, 'pages/Payment.html', context = context)

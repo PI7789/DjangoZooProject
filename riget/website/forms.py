@@ -54,5 +54,10 @@ class PaymentForm(forms.ModelForm):
 
         fields = ['card_num','Expiry_Date','Card_Name','security_code']
 
+        labels={"card_num": 'Card Number',
+                "Expiry_Date": 'Expiration Date MM/YY',
+                "Card_Name": 'Name On Card',
+                "security_code": 'CVC/Security Code'}
+
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
