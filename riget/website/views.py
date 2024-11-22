@@ -4,7 +4,7 @@ from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import ZooUser
+from .models import ZooUser, HotelBooking
 
 
 
@@ -96,10 +96,12 @@ def booking (request):
     form = Hotel_Booking_Form()
 
     if request.method == "POST":
+        print("on booking")
         updated_request = request.POST.copy()
         updated_request.update({'hotel_user_id_id': request.user})
 
         form = Hotel_Booking_Form(updated_request)
+       
 
         if form.is_valid():
             obj = form.save(commit=False)
@@ -113,6 +115,7 @@ def booking (request):
             hotel_total_cost = int(obj.hotel_booking_adults) * 65 \
             + int(obj.hotel_booking_children) * 35 \
             + int(obj.hotel_booking_oap) * 45
+            print (hotel_total_cost)
             
             hotel_total_cost *= int(result.days)
 
@@ -130,7 +133,7 @@ def booking (request):
            
 
             messages.success(request, "Hotel Booked Successfully")
-            return redirect('') 
+            return redirect('Payment') 
 
 
         else:
@@ -138,35 +141,34 @@ def booking (request):
              return redirect('hotel')
     context = {'form': form}
 
-    return render(request, 'pages/booking1.html', context=context)  
+    return render(request, 'pages/booking1.html', context=context, )  
 
 
 @login_required(login_url="login")
 def Payment(request):
-    
-
+    booking = HotelBooking.objects.latest("hotel_user_id")
     form = PaymentForm()
 
     if request.method == "POST":
-        updated_request = request.POST.copy()
-        updated_request.update({'hotel_user_id_id': request.user})
-
-        form = PaymentForm(updated_request)
-
-        if form.is_valid():
-            obj = form.save(commit=False)
-
-
-
-
-
-            obj.save()
-
-            messages.success(request, "Payment Successful")
-            return redirect('')   
-        else:
-             print("there was a problem with the Payment")
-             return redirect('Payment')
         
-    context = {'paymentform': form}
+            print("paymeent accepted")
+            updated_request = request.POST.copy()
+            updated_request.update({'hotel_user_id_id': request.user})
+
+            form = PaymentForm(updated_request)
+
+            if form.is_valid():
+                obj = form.save(commit=False)
+
+                obj.save()
+
+                messages.success(request, "Payment Successful")
+
+                return redirect('')   
+            else:
+                print("there was a problem with the Payment")
+                return redirect('')
+        
+    context = {'paymentform': form, 
+               'booking': booking}
     return render(request, 'pages/Payment.html', context = context)

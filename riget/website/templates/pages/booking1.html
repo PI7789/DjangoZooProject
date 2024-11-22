@@ -6,10 +6,10 @@
 
 <div class="container bg-primary text-white p-5 form-layout">
     <h3>book your hotel stay</h3>
-    <hr>
+    <hr>    
     <br>
     
-    <form action="{% url 'Payment' %}" method="POST" autocomplete="off">
+    <form action="{% url 'Booking1' %}" method="POST" autocomplete="off">
         {% csrf_token %}
 
         {{form|crispy}}
