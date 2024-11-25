@@ -109,19 +109,15 @@ def booking (request):
             arrive = obj.hotel_booking_date_arrive
             depart = obj.hotel_booking_date_leave
             result = depart - arrive
-            print ("Number of days: ", result.days)
 
 
             hotel_total_cost = int(obj.hotel_booking_adults) * 65 \
             + int(obj.hotel_booking_children) * 35 \
             + int(obj.hotel_booking_oap) * 45
-            print (hotel_total_cost)
-            
             hotel_total_cost *= int(result.days)
 
-            hotel_points = int(hotel_total_cost / 20)
-            print("Hotel Points:", hotel_points)
-            print("printing booking cost: ", hotel_total_cost)
+            hotel_points = int(hotel_total_cost)
+
 
 
             obj.hotel_points = hotel_points
@@ -146,6 +142,7 @@ def booking (request):
 
 @login_required(login_url="login")
 def Payment(request):
+    one_record = ZooUser.objects.get(id=request.user.id)
     booking = HotelBooking.objects.latest("hotel_user_id")
     form = PaymentForm()
 
@@ -160,7 +157,13 @@ def Payment(request):
             if form.is_valid():
                 obj = form.save(commit=False)
 
+
+
+
                 obj.save()
+                cpoints = request.POST.get("use_points")
+                
+                request.user.addpoints(booking.hotel_points)
 
                 messages.success(request, "Payment Successful")
 

@@ -9,6 +9,26 @@ class ZooUser(AbstractUser):
     phonenum = models.CharField(max_length=14, blank=True)
     points = models.IntegerField(default = 0)
 
+    def addpoints(self, cost):
+        self.points += cost // 10
+
+        self.save()
+
+    def spendpoints(self, cost):
+        cost - self.points
+        tempcost = cost - self.points
+        pointdiff = cost - tempcost
+        self.points - pointdiff
+        if self.points < 0:
+            self.points = 0
+            
+
+
+        return cost
+    
+
+
+        
 class HotelBooking(models.Model):
 
     booking_id = models.AutoField(primary_key=True, editable = False)

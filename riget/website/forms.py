@@ -52,7 +52,7 @@ class PaymentForm(forms.ModelForm):
     class Meta:
         model = PaymentModel
 
-        fields = ['card_num','Expiry_Date','Card_Name','security_code']
+        fields = ['card_num','Expiry_Date','Card_Name','security_code',]
 
         labels={"card_num": 'Card Number',
                 "Expiry_Date": 'Expiration Date MM/YY',
