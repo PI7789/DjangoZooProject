@@ -106,12 +106,19 @@ body   {
     margin-left: 180px;
 }
 
-.card4{
-    
+.cont1{
+    display: flex;
+    justify-content: space-between;
 }
 
 
 .paymentbutton{
 
     background-color: aqua;
+}
+
+.shift-left {
+    width: 50%; 
+    margin-left: 0; 
+    padding-left: 20px; 
 }

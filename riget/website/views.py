@@ -164,6 +164,10 @@ def Payment(request):
                 cpoints = request.POST.get("use_points")
                 
                 request.user.addpoints(booking.hotel_points)
+                checkbox_points =  request.POST.get("use_points")
+                if checkbox_points == "yes":
+                    request.user.spendpoints(booking.hotel_total_cost)
+
 
                 messages.success(request, "Payment Successful")
 
@@ -175,3 +179,7 @@ def Payment(request):
     context = {'paymentform': form, 
                'booking': booking}
     return render(request, 'pages/Payment.html', context = context)
+
+def Loyalty(request, pk):
+    one_record = ZooUser.objects.get(id=pk)
+    return render(request, 'pages/loyalty.html')

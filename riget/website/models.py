@@ -15,13 +15,12 @@ class ZooUser(AbstractUser):
         self.save()
 
     def spendpoints(self, cost):
-        cost - self.points
-        tempcost = cost - self.points
-        pointdiff = cost - tempcost
-        self.points - pointdiff
-        if self.points < 0:
+        
+        if self.points < cost:
             self.points = 0
-            
+        else:
+            self.points - cost
+        self.save()
 
 
         return cost

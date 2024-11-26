@@ -5,10 +5,14 @@ function update_cost(){
         arrive = new Date(arrive)
         leave = new Date(leave)
         diff = leave.getTime() - arrive.getTime();
-        days = Math.round(Math.abs(diff/(1000*60*60*24)));
+        days = Math.round((diff/(1000*60*60*24)));
+        if (days < 0) {
+            let price = document.getElementById('hotel_output')
+            price.innerHTML = "Hotel cost: Date is invalid."
+            return
+        }
 
-
-        if (String(days) == "NaN"){
+        else if(String(days) == "NaN"){
             let price = document.getElementById('hotel_output')
             price.innerHTML = "Hotel cost: Dates Not Chosen"
 
@@ -27,6 +31,7 @@ function update_cost(){
             price.innerHTML = "Hotel cost: £" + String(total)
 
         }
+
 }
 
 let adults = document.getElementById("id_hotel_booking_adults");
