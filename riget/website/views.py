@@ -180,6 +180,8 @@ def Payment(request):
                'booking': booking}
     return render(request, 'pages/Payment.html', context = context)
 
-def Loyalty(request, pk):
-    one_record = ZooUser.objects.get(id=pk)
+
+def Loyalty(request):
+    if request.user.is_authenticated:
+        one_record = ZooUser.objects.get(id=request.user.id)
     return render(request, 'pages/loyalty.html')

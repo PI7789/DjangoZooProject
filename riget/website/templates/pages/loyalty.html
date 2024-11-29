@@ -3,6 +3,10 @@
 {% block content %}
 <div class="container cont1">
 <h5 class = "shift-left"> Our zoo's loyalty scheme is designed to reward you for every visit and purchase! For every £10 spent, you’ll earn one point, and each point is worth £1 off your next purchase. Whether you’re stocking up on souvenirs, enjoying a delicious meal at the zoo café, or planning your next family adventure, you’ll be saving more with every purchase. The more you visit, the more points you collect, bringing you closer to exciting discounts on future trips. It’s our way of saying thank you for supporting the zoo while making your experience even more rewarding! </h5>
-
+{% if user.is_authenticated %}
+<h5 class = "shift-right"> Your current points: {{user.points}} </h5>
+{% else %}
+<h5 class = "shift-right"> Your current points:  </h5> <h5 class = "colour123"> Not logged in </h5>
+{% endif %}
 </div>
 {% endblock %}
